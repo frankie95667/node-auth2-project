@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const { all } = require("./user-model");
+const { findByNoPass } = require("./user-model");
 
 router.get('/', (req, res) => {
-    all()
+    findByNoPass({department: req.user.department})
     .then(users => {
         res.status(200).json(users);
     })

@@ -1,6 +1,7 @@
 module.exports = {
     all,
     findBy,
+    findByNoPass,
     findById,
     add
 }
@@ -13,6 +14,10 @@ function all(){
 
 function findBy(filter){
     return db("users").where(filter);
+}
+
+function findByNoPass(filter){
+    return db("users").select("id", "username", "department").where(filter);
 }
 
 function findById(id){
